@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Game</title>
+</head>
+<body>
+<h1>The Psychic Game</h1>
+
+<script type="text/javascript">
+
+// Computer Guesses & arrays of strings
+  var alphabet = "abcdefghijklmnopqrstuvwxyz";
+  var wins = 0;
+  var losses = 0;
+  var ties = 0;
+  
+// User Guess
+document.onkeyup = function() {
+    var userGuess = String.fromCharCode(event.keyCode).
+      toLowerCase();
+
+  console.log(userGuess);
+}
+
+var comeputerGuess = alphabet[Math.floor(Math.random()=alphabet.length)];
+  console.log(computerGuess);
+
+  if(userguess == computerGuess){
+    alert("Correct!");
+  }else {
+    alert("try again");
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+// <!--User Guess-->
+// <!--Wins-->
+// <!--losses-->
+// <!--How many guess left-->
+// <!--Your Guesses So Far-->
+// <!-- When the player wins-->
+// <!-- When the player loses-->
+
+
+
+
+
+</script>
+</body>
+</html>
