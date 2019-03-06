@@ -1,62 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Game</title>
 </head>
+
 <body>
-<h1>The Psychic Game</h1>
-
-<script type="text/javascript">
-
-// Computer Guesses & arrays of strings
-  var alphabet = "abcdefghijklmnopqrstuvwxyz";
-  var wins = 0;
-  var losses = 0;
-  var ties = 0;
-  
-// User Guess
-document.onkeyup = function() {
-    var userGuess = String.fromCharCode(event.keyCode).
-      toLowerCase();
-
-  console.log(userGuess);
-}
-
-var comeputerGuess = alphabet[Math.floor(Math.random()=alphabet.length)];
-  console.log(computerGuess);
-
-  if(userguess == computerGuess){
-    alert("Correct!");
-  }else {
-    alert("try again");
-  }
+  <h1>The Psychic Game</h1>
+  <p>Guess what letter I'm thinking of </p>
+  <p>Win: <span id="wins">0</span></p>
+  <p>Losses: <span id="losses">0</span> </p>
+  <p>Guesses left: <span id="guessesLeft">10</span> </p>
+  <p>Your Guesses so far: <span id="letterguessed"></span> </p>
 
 
+  <script type="text/javascript">
+    // Computer Guesses & arrays of strings
+    var alphabet = "abcdefghijklmnopqrstuvwxyz";
 
+    // win losses guesses
+    var wins = 0;
+    var losses = 0;
+    var guessesLeft = 10;
+    var guessChoices = [];
 
+    var winText = document.getElementById("wins");
+    var lossText = document.getElementById("losses");
+    var guessText = document.getElementById("guessesLeft");
+    var letterguessText = document.getElementById("letterguessed");
 
+    // User Guess key press
+    document.onkeyup = function () {
+      var userGuess = String.fromCharCode(event.keyCode).
+      userGuess = event.key;
 
+      // random computer generator 
+      var computerGuess = alphabet[Math.floor(Math.random() * alphabet.length)];
+      console.log(computerGuess);
 
+      // when user guess correct, increase by 1
+      // and reset game to default
+      if (userGuess === computerGuess) {
+        (wins++);
+        guessChoices = [];
+        guessesLeft = 10;
+        console.log(wins)
 
+      } else if (userGuess !== computerGuess) {
+        guessesLeft--;
+        guessChoices.push(userGuess)
+        console.log(guessesLeft)
+      }
+      if (guessesLeft === 0) {
+        losses++
+        guessChoices = [];
+        guessesLeft = 10;
+      }
 
-
-
-
-// <!--User Guess-->
-// <!--Wins-->
-// <!--losses-->
-// <!--How many guess left-->
-// <!--Your Guesses So Far-->
-// <!-- When the player wins-->
-// <!-- When the player loses-->
-
-
-
-
-
-</script>
+      winText.textContent = wins;
+      lossText.textContent = losses;
+      guessText.textContent = guessesLeft;
+      letterguessText.textContent = guessChoices;
+    }
+  </script>
 </body>
+
 </html>
